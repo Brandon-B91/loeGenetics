@@ -36,8 +36,8 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful Starter",
-    description: "Official Contentful Gatsby Starter",
+    title: "Land of entrapment Genetics",
+    description: "Desert rose products",
   },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
