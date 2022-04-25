@@ -5,6 +5,7 @@
   align-items: center;
   margin: 0 auto;
   padding: var(--space-2xl) var(--size-gutter);
+  background: #b49688;
 }
 
 .navigation {
@@ -27,8 +28,8 @@
 }
 
 .navigationItem a:hover {
-  border-bottom-color: var(--primary);
-  color: var(--primary);
+  border-bottom-color: #866662;
+  color: #866662;
 }
 
 .logoLink {

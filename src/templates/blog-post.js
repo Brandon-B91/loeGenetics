@@ -10,7 +10,7 @@ import * as styles from './blog-post.module.css'
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
+    const post = get(this.props, 'data.contentfulProduct')
     const previous = get(this.props, 'data.previous')
     const next = get(this.props, 'data.next')
 
@@ -24,14 +24,10 @@ class BlogPostTemplate extends React.Component {
         <Hero
           image={post.heroImage?.gatsbyImageData}
           title={post.title}
+          price={` $ ${post.Price} / gram`}
           content={post.description?.childMarkdownRemark?.excerpt}
         />
         <div className={styles.container}>
-          <span className={styles.meta}>
-            {post.author?.name} &middot;{' '}
-            <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
-            {post.body?.childMarkdownRemark?.timeToRead} minute read
-          </span>
           <div className={styles.article}>
             <div
               className={styles.body}
@@ -45,14 +41,14 @@ class BlogPostTemplate extends React.Component {
                 <ul className={styles.articleNavigation}>
                   {previous && (
                     <li>
-                      <Link to={`/blog/${previous.slug}`} rel="prev">
+                      <Link to={`/store/${previous.slug}`} rel="prev">
                         ← {previous.title}
                       </Link>
                     </li>
                   )}
                   {next && (
                     <li>
-                      <Link to={`/blog/${next.slug}`} rel="next">
+                      <Link to={`/store/${next.slug}`} rel="next">
                         {next.title} →
                       </Link>
                     </li>
@@ -70,19 +66,15 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
+  query ProductBySlug(
     $slug: String!
     $previousPostSlug: String
     $nextPostSlug: String
   ) {
-    contentfulBlogPost(slug: { eq: $slug }) {
+    contentfulProduct(slug: { eq: $slug }) {
       slug
       title
-      author {
-        name
-      }
-      publishDate(formatString: "MMMM Do, YYYY")
-      rawDate: publishDate
+      Price
       heroImage {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)
         resize(height: 630, width: 1200) {
@@ -102,11 +94,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    previous: contentfulBlogPost(slug: { eq: $previousPostSlug }) {
+    previous: contentfulProduct(slug: { eq: $previousPostSlug }) {
       slug
       title
     }
-    next: contentfulBlogPost(slug: { eq: $nextPostSlug }) {
+    next: contentfulProduct(slug: { eq: $nextPostSlug }) {
       slug
       title
     }

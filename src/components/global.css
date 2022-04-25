@@ -57,7 +57,7 @@ a {
 }
 
 a:hover {
-  color: var(--primary);
+  color: #866662;
 }
 
 a.active {

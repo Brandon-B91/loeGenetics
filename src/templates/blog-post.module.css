@@ -28,13 +28,13 @@
 }
 
 .article a {
-  border-bottom: 1.5px solid currentColor;
+  /* border-bottom: 1.5px solid currentColor; */
   font-weight: var(--medium);
 }
 
 .article a:hover {
   border-bottom-color: transparent;
-  color: var(--primary);
+  color: 866662;
 }
 
 .article p {
